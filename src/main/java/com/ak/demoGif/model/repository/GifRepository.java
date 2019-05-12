@@ -9,6 +9,7 @@ import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class GifRepository {
@@ -52,5 +53,16 @@ public class GifRepository {
             }
         }
         return categories;
+    }
+
+    public Gif getGifByName(String name) {
+
+        for (Gif gif : ALL_GIFS){
+            if (name.equals(gif.getName())){
+                return gif;
+            }
+        }
+        return null;
+//        return Optional.empty();
     }
 }

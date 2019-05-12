@@ -5,6 +5,7 @@ import com.ak.demoGif.model.repository.GifRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -45,4 +46,21 @@ public class GifController {
 
         return "favorites";
     }
+
+    /*
+    C - create
+    R - read
+    U - update
+    D - delete
+
+    * */
+
+    @RequestMapping("/gif/{name}")
+    public String gifRepository(@PathVariable String name, ModelMap modelMap){
+        Gif gif  = gifRepository.getGifByName(name);
+        modelMap.put("gif", gif);
+        return "gif-details";
+    }
+
+
 }
